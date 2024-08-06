@@ -1,0 +1,1743 @@
+package spec;
+
+import com.codeborne.selenide.WebDriverRunner;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.by;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.closeWindow;
+import static java.lang.Thread.sleep;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+
+public class BeprcLogin {
+
+   // BeprcPages beprcPages=new BeprcPages();
+
+
+    @Test
+    @DisplayName("Super Admin Login and Navbar Check")
+    public void superAdmin() throws Exception {
+        ScreenRecorderUtil.startRecord("Super Admin Login , Role Check and Navbar Check");
+
+        open("http://localhost:5173/");
+        sleep(200);
+        //Login / Register
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+//        $(By.className("bg-orange-600")).shouldBe(visible).click();
+        $(By.id("username")).setValue("superadmin@beprc.com");
+        $(By.id("password")).setValue("12345");
+        sleep(200);
+        $(By.name("login")).click();
+        sleep(200);
+        //$(By.className("text-sm")).shouldHave(text("SUPER_ADMIN"));
+       $(".text-sm.text-gray-200").shouldHave(text("Super Admin"));
+        String elementText = $(".text-sm.text-gray-200").getText();
+        System.out.println("Element text Role Name : " + elementText);
+        sleep(500);
+
+//      href='/
+        String sliderText = $("a[href='/']").text();
+        System.out.println(sliderText);
+        assertEquals("Slider Image", sliderText);
+        $("a[href='/']").click();
+        sleep(200);
+        String urlSliderImage = WebDriverRunner.url();
+        assertEquals(urlSliderImage, "http://localhost:5173/");
+        sleep(200);
+//      href='/news'
+        String newsText = $("a[href='/news']")
+                .shouldBe(visible)
+                .getText();
+        assertEquals("Bulletin", newsText);
+        System.out.println(newsText);
+        $("a[href='/news']").click();
+        sleep(200);
+        String urlNews = WebDriverRunner.url();
+        assertEquals(urlNews, "http://localhost:5173/news");
+        sleep(200);
+//      href='/activities
+        String activitesText = $("a[href='/activities']").text();
+        System.out.println(activitesText);
+        assertEquals("Key Activities", activitesText);
+        $("a[href='/activities']").click();
+        sleep(200);
+        String urlActivities = WebDriverRunner.url();
+        assertEquals(urlActivities, "http://localhost:5173/activities");
+        sleep(200);
+//      href="/messages"
+        String messagesText = $("a[href='/messages']").text();
+        System.out.println(messagesText);
+        assertEquals("Message", messagesText);
+        $("a[href='/messages']").click();
+        sleep(200);
+        String urlMessages = WebDriverRunner.url();
+        assertEquals(urlMessages, "http://localhost:5173/messages");
+        sleep(200);
+//      href="/fundings
+        String fundingsText = $("a[href='/fundings']").text();
+        System.out.println(fundingsText);
+        assertEquals("About BEPRC", fundingsText);
+        $("a[href='/fundings']").click();
+        sleep(200);
+        String urlFundings = WebDriverRunner.url();
+        assertEquals(urlFundings, "http://localhost:5173/fundings");
+        sleep(200);
+//      href="/articles
+        String articlesText = $("a[href='/articles']").text();
+        System.out.println(articlesText);
+        assertEquals("News and Articles", articlesText);
+        $("a[href='/articles']").click();
+        sleep(200);
+        String urlArticles = WebDriverRunner.url();
+        assertEquals(urlArticles, "http://localhost:5173/articles");
+        sleep(200);
+
+//      href="/important-links
+        String importantLinksText = $("a[href='/important-links']").text();
+        System.out.println(importantLinksText);
+        assertEquals("Important Link", importantLinksText);
+        $("a[href='/important-links']").click();
+        sleep(200);
+        String urlImportantLinks = WebDriverRunner.url();
+        assertEquals(urlImportantLinks, "http://localhost:5173/important-links");
+        sleep(200);
+//      href="/admin-users"
+        String adminUsersText = $("a[href='/admin-users']").text();
+        System.out.println(adminUsersText);
+        assertEquals("Wing Admin Assign", adminUsersText);
+        $("a[href='/admin-users']").click();
+        sleep(200);
+        String urlAdminUsers = WebDriverRunner.url();
+        assertEquals(urlAdminUsers, "http://localhost:5173/admin-users");
+        sleep(200);
+//      href="/guidlines"
+        String guidlinesText = $("a[href='/guidlines']").text();
+        System.out.println(guidlinesText);
+        assertEquals("Guideline", guidlinesText);
+        $("a[href='/guidlines']").click();
+        sleep(200);
+        String urlGuideline = WebDriverRunner.url();
+        assertEquals(urlGuideline, "http://localhost:5173/guidlines");
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+
+        sleep(500);
+        ScreenRecorderUtil.stopRecord();
+    }
+
+    @Test
+    @DisplayName("Innovation Admin Login and Navbar Check")
+    public void innovationAdminLogin() throws Exception {
+        ScreenRecorderUtil.startRecord("Innovation Admin Login, Role Check and Navbar Check");
+
+        open("http://localhost:5173/");
+        sleep(200);
+        $(byText("Login / Register")).shouldBe(visible).click();
+
+
+        sleep(200);
+        $(By.id("username")).setValue("innovationAdmin@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+        $(".text-sm.text-gray-200").shouldHave(text("Innovation Admin"));
+        String elementText = $(".text-sm.text-gray-200").getText();
+        System.out.println("Element text Role Name : " + elementText);
+        //$(byText("INNOVATION_ADMIN")).shouldHave(text("INNOVATION_ADMIN"));
+        sleep(200);
+
+//      href="/dashboard"
+        String dashboardText = $("a[href='/dashboard']").text();
+        System.out.println(dashboardText);
+        assertEquals("Dashboard", dashboardText);
+        $("a[href='/dashboard']").click();
+        sleep(200);
+        String urlDashboard = WebDriverRunner.url();
+        assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//      href="/proposal"
+        String proposalText = $("a[href='/proposal']").text();
+        System.out.println(proposalText);
+        assertEquals("Proposal", proposalText);
+        $("a[href='/proposal']").click();
+        sleep(200);
+        String urlProposal = WebDriverRunner.url();
+        assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+//      href="/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf"
+        String projectManagementAdminText = $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").text();
+        System.out.println(projectManagementAdminText);
+        assertEquals("Project Management", projectManagementAdminText);
+        $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").click();
+        sleep(200);
+        String urlProjectManagement = WebDriverRunner.url();
+        assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf");
+
+//      href="/report-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf"
+        String reportManagementAdminText = $("a[href='/report-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").text();
+        System.out.println(reportManagementAdminText);
+        assertEquals("Report Management", reportManagementAdminText);
+        $("a[href='/report-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").click();
+        sleep(200);
+        String urlReportManagement = WebDriverRunner.url();
+        assertEquals(urlReportManagement, "http://localhost:5173/report-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf");
+
+//      href="/researchArea"
+        String researchAreaText = $("a[href='/researchArea']").text();
+        System.out.println(researchAreaText);
+        assertEquals("Add Research Area Title", researchAreaText);
+        $("a[href='/researchArea']").click();
+        sleep(200);
+        String urlAddResearch = WebDriverRunner.url();
+        assertEquals(urlAddResearch, "http://localhost:5173/researchArea");
+
+//      href="/solicitation"
+        String solicitationText = $("a[href='/solicitation']").text();
+        System.out.println(solicitationText);
+        assertEquals("Innovation Solicitation", solicitationText);
+        $("a[href='/solicitation']").click();
+        sleep(200);
+        String urlInnovationSolicitation = WebDriverRunner.url();
+        assertEquals(urlInnovationSolicitation, "http://localhost:5173/solicitation");
+
+//      href="/screening/INNOVATION_SCREENING_COMMITTEE/d78f7c60-bf82-4a02-9057-93e93bfb1c44"
+        String screeningText = $("a[href='/screening/INNOVATION_SCREENING_COMMITTEE/d78f7c60-bf82-4a02-9057-93e93bfb1c44']").text();
+        System.out.println(screeningText);
+        assertEquals("Screening Committee", screeningText);
+        $("a[href='/screening/INNOVATION_SCREENING_COMMITTEE/d78f7c60-bf82-4a02-9057-93e93bfb1c44']").click();
+        sleep(200);
+        String urlScreeningCommittee = WebDriverRunner.url();
+        assertEquals(urlScreeningCommittee, "http://localhost:5173/screening/INNOVATION_SCREENING_COMMITTEE/d78f7c60-bf82-4a02-9057-93e93bfb1c44");
+
+//      href="/negotiation/INNOVATION_NEGOTIATION_COMMITTEE/795a2fb7-4d9e-4e7a-be68-cc211d8ead28"
+        String negotiationText = $("a[href='/negotiation/INNOVATION_NEGOTIATION_COMMITTEE/795a2fb7-4d9e-4e7a-be68-cc211d8ead28']").text();
+        System.out.println(negotiationText);
+        assertEquals("Negotiation Committee", negotiationText);
+        $("a[href='/negotiation/INNOVATION_NEGOTIATION_COMMITTEE/795a2fb7-4d9e-4e7a-be68-cc211d8ead28']").click();
+        sleep(200);
+        String urlNegotiationCommittee = WebDriverRunner.url();
+        assertEquals(urlNegotiationCommittee, "http://localhost:5173/negotiation/INNOVATION_NEGOTIATION_COMMITTEE/795a2fb7-4d9e-4e7a-be68-cc211d8ead28");
+
+//      href="/reviewer/INNOVATION"
+        String reviewerText = $("a[href='/reviewer/INNOVATION']").text();
+        System.out.println(reviewerText);
+        assertEquals("Add Reviewer", reviewerText);
+        $("a[href='/reviewer/INNOVATION']").click();
+        sleep(200);
+        String urlAddReviewer = WebDriverRunner.url();
+        assertEquals(urlAddReviewer, "http://localhost:5173/reviewer/INNOVATION");
+
+//      href="/report"
+        String reportText = $("a[href='/report']").text();
+        System.out.println(reportText);
+        assertEquals("Report", reportText);
+        $("a[href='/report']").click();
+        sleep(200);
+        String urlReport = WebDriverRunner.url();
+        assertEquals(urlReport, "http://localhost:5173/report");
+
+//      href="/pcr-report-list"
+        String pcrText = $("a[href='/pcr-report-list']").text();
+        System.out.println(pcrText);
+        assertEquals("Innovation PCR & Recommendation Report", pcrText);
+        $("a[href='/pcr-report-list']").click();
+        sleep(200);
+        String urlPCR = WebDriverRunner.url();
+        assertEquals(urlPCR, "http://localhost:5173/pcr-report-list");
+
+//      href="/AttachmentDeclaration"
+        String attachmentDeclarationText = $("a[href='/AttachmentDeclaration']").text();
+        System.out.println(attachmentDeclarationText);
+        assertEquals("Attachment & Declaration", attachmentDeclarationText);
+        $("a[href='/AttachmentDeclaration']").click();
+        sleep(200);
+        String urlAttachmentDeclaration = WebDriverRunner.url();
+        assertEquals(urlAttachmentDeclaration, "http://localhost:5173/AttachmentDeclaration");
+
+//      href="/screening-committee-criteria"
+        String screeningCommitteeCriteriaText = $("a[href='/screening-committee-criteria']").text();
+        System.out.println(screeningCommitteeCriteriaText);
+        assertEquals("Screening Committee Criteria", screeningCommitteeCriteriaText);
+        $("a[href='/screening-committee-criteria']").click();
+        sleep(200);
+        String urlScreeningCommitteeCriteria = WebDriverRunner.url();
+        assertEquals(urlScreeningCommitteeCriteria, "http://localhost:5173/screening-committee-criteria");
+
+//      href="/user"
+        String userText = $("a[href='/user']").text();
+        System.out.println(userText);
+        assertEquals("User", userText);
+        $("a[href='/user']").click();
+        sleep(200);
+        String urlUser = WebDriverRunner.url();
+        assertEquals(urlUser, "http://localhost:5173/user");
+        sleep(200);
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(500);
+        ScreenRecorderUtil.stopRecord();
+    }
+
+    @Test
+    @DisplayName("Innovation Screening Committee Login and Navbar Check")
+    public void innovationScreeningCommittee() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("innovationScreeningCommittee1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+        String elementText = $(By.cssSelector(".text-sm.text-gray-200")).shouldBe(visible).getText();
+        boolean x =elementText.contains("Innovation Screening Committee");
+        if(x){
+            sleep(500);
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Innovation Screening Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+
+        }
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+        sleep(500);
+
+    }
+
+    @Test
+    @DisplayName("innovation Reviewer Login and Navbar Check")
+    public void innovationReviewer() throws InterruptedException {
+        sleep(1000);
+        //ScreenRecorderUtil.startRecord("INNOVATION_REVIEWER_1 Check Ro  le and Navbar");
+
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+//        $(By.className("bg-orange-600"))
+//                .shouldBe(visible)
+//                .click();
+
+        sleep(200);
+        $(By.id("username")).setValue("innovationReviewer1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        $(byText("INNOVATION_REVIEWER_1")).shouldBe(visible).click();
+        $(byText("Profile")).shouldBe(visible).click();
+
+
+       /* String text = $("#name").val();
+        System.out.println("Value of the element: " + text);
+        assertEquals("INNOVATION_REVIEWER_1", text);
+
+        sleep(1000);
+
+        String text1 = $("#emailAddress").val();
+        System.out.println("Value of the element: " + text1);
+        assertEquals("innovationReviewer1@beprc.com", text1);
+
+        sleep(5000);*/
+
+
+
+        if($(".text-sm.text-gray-200").getText().contains("Reviewer")){
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+              $(byText("Reviewer")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+
+        }
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+    }
+    @Test
+    @DisplayName("Innovation Negation Committee Login and Navbar Check")
+    public void innovationNegationCommittee() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("innovationNegotiationCommittee1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+
+        String elementText = $(By.cssSelector(".text-sm.text-gray-200")).shouldBe(visible).getText();
+        boolean x =elementText.contains("Innovation Negotiation Committee");
+        if(x){
+            sleep(500);
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Innovation Negotiation Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+
+        }
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+
+    }
+
+
+    @Test
+    @DisplayName("Incubation Admin Login and Navbar Check")
+    public void incubationAdmin() throws Exception {
+        //ScreenRecorderUtil.startRecord("Incubation Admin Login and Navbar check");
+
+        open("http://localhost:5173/");
+        sleep(200);
+        $(byText("Login / Register")).shouldBe(visible).click();
+        /*  $(By.className("bg-orange-600")).shouldBe(visible).click();*/
+
+        $(By.id("username")).setValue("incadm@ovi.com");
+        $(By.id("password")).setValue("12345");
+        sleep(200);
+        $(By.name("login")).click();
+        sleep(200);
+
+        //$(byText("Incubation Admin")).shouldHave(text("Incubation Admin"));
+        $(".text-sm.text-gray-200").shouldHave(text("Incubation Admin"));
+        String elementText = $(".text-sm.text-gray-200").getText();
+        System.out.println("Element text Role Name : " + elementText);
+        sleep(200);
+
+//      href="/dashboard"
+        String dashboardText = $("a[href='/dashboard']").text();
+        System.out.println(dashboardText);
+        assertEquals("Dashboard", dashboardText);
+        $("a[href='/dashboard']").click();
+        sleep(200);
+        String urlDashboard = WebDriverRunner.url();
+        assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//      href="/proposal"
+        String proposalText = $("a[href='/proposal']").text();
+        System.out.println(proposalText);
+        assertEquals("Proposal", proposalText);
+        $("a[href='/proposal']").click();
+        sleep(200);
+        String urlProposal = WebDriverRunner.url();
+        assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+//      href="/project-management-admin/28071f83-77dd-40a9-8f68-1d622e6d4223"
+        String projectManagementAdminText = $("a[href='/project-management-admin/28071f83-77dd-40a9-8f68-1d622e6d4223']").text();
+        System.out.println(projectManagementAdminText);
+        assertEquals("Project Management", projectManagementAdminText);
+        $("a[href='/project-management-admin/28071f83-77dd-40a9-8f68-1d622e6d4223']").click();
+        sleep(200);
+        String urlProjectManagement = WebDriverRunner.url();
+        assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/28071f83-77dd-40a9-8f68-1d622e6d4223");
+
+//      href="/report-management-admin/28071f83-77dd-40a9-8f68-1d622e6d4223"
+        String reportManagementAdminText = $("a[href='/report-management-admin/28071f83-77dd-40a9-8f68-1d622e6d4223']").text();
+        System.out.println(reportManagementAdminText);
+        assertEquals("Report Management", reportManagementAdminText);
+        $("a[href='/report-management-admin/28071f83-77dd-40a9-8f68-1d622e6d4223']").click();
+        sleep(200);
+        String urlReportManagement = WebDriverRunner.url();
+        assertEquals(urlReportManagement, "http://localhost:5173/report-management-admin/28071f83-77dd-40a9-8f68-1d622e6d4223");
+
+//      href="/solicitation"
+        String solicitationText = $("a[href='/solicitation']").text();
+        System.out.println(solicitationText);
+        assertEquals("Incubation Solicitation", solicitationText);
+        $("a[href='/solicitation']").click();
+        sleep(200);
+        String IncubationSolicitation = WebDriverRunner.url();
+        assertEquals(IncubationSolicitation, "http://localhost:5173/solicitation");
+
+//      href="/screening/INCUBATION_SCREENING_COMMITTEE/3760d33b-241c-486b-937f-045453969183"
+        String screeningText = $("a[href='/screening/INCUBATION_SCREENING_COMMITTEE/3760d33b-241c-486b-937f-045453969183']").text();
+        System.out.println(screeningText);
+        assertEquals("Incubation Screening Committee", screeningText);
+        $("a[href='/screening/INCUBATION_SCREENING_COMMITTEE/3760d33b-241c-486b-937f-045453969183']").click();
+        sleep(200);
+        String urlIncubationScreeningCommittee = WebDriverRunner.url();
+        assertEquals(urlIncubationScreeningCommittee, "http://localhost:5173/screening/INCUBATION_SCREENING_COMMITTEE/3760d33b-241c-486b-937f-045453969183");
+
+//      href="/negotiation/INCUBATION_NEGOTIATION_COMMITTEE/314cf5f5-c0ad-410e-9fa4-0d17ab5b7290"
+        String negotiationText = $("a[href='/negotiation/INCUBATION_NEGOTIATION_COMMITTEE/314cf5f5-c0ad-410e-9fa4-0d17ab5b7290']").text();
+        System.out.println(negotiationText);
+        assertEquals("Incubation Negotiation Committee", negotiationText);
+        $("a[href='/negotiation/INCUBATION_NEGOTIATION_COMMITTEE/314cf5f5-c0ad-410e-9fa4-0d17ab5b7290']").click();
+        sleep(200);
+        String urlIncubationNegotiationCommittee = WebDriverRunner.url();
+        assertEquals(urlIncubationNegotiationCommittee, "http://localhost:5173/negotiation/INCUBATION_NEGOTIATION_COMMITTEE/314cf5f5-c0ad-410e-9fa4-0d17ab5b7290");
+
+//      href="/reviewer/INCUBATION"
+        String reviewerText = $("a[href='/reviewer/INCUBATION']").text();
+        System.out.println(reviewerText);
+        assertEquals("IPSC (Incubation Proposal Scoring Committee)", reviewerText);
+        $("a[href='/reviewer/INCUBATION']").click();
+        sleep(200);
+        String urlIncubationProposalScoringCommittee = WebDriverRunner.url();
+        assertEquals(urlIncubationProposalScoringCommittee, "http://localhost:5173/reviewer/INCUBATION");
+
+//      href="/user"
+        String userText = $("a[href='/user']").text();
+        System.out.println(userText);
+        assertEquals("User", userText);
+        $("a[href='/user']").click();
+        sleep(200);
+        String urlUser = WebDriverRunner.url();
+        assertEquals(urlUser, "http://localhost:5173/user");
+
+//      href="/report"
+        String reportText = $("a[href='/report']").text();
+        System.out.println(reportText);
+        assertEquals("Report", reportText);
+        $("a[href='/report']").click();
+        sleep(200);
+        String urlReport = WebDriverRunner.url();
+        assertEquals(urlReport, "http://localhost:5173/report");
+
+//       TODO PCR & Recommendation Report
+         $(by("data-testid", "ExpandMoreIcon")).shouldBe(visible).click();
+
+
+
+
+//      href="/AttachmentDeclaration"
+        String AttachmentDeclarationText = $("a[href='/AttachmentDeclaration']").text();
+        System.out.println(AttachmentDeclarationText);
+        assertEquals("Attachment & Declaration", AttachmentDeclarationText);
+        $("a[href='/AttachmentDeclaration']").click();
+        sleep(200);
+        String urlAttachmentDeclaration = WebDriverRunner.url();
+        assertEquals(urlAttachmentDeclaration, "http://localhost:5173/AttachmentDeclaration");
+        sleep(200);
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(500);
+       // ScreenRecorderUtil.stopRecord();
+    }
+
+    @Test
+    @DisplayName("Incubation Screeing Committee Login and Navbar Check")
+    public void incubationScreeingCommittee () throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("incScCm1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+        String elementText = $(By.cssSelector(".text-sm.text-gray-200")).shouldBe(visible).getText();
+        boolean x =elementText.contains("Incubation Screening Committee");
+        if(x){
+            sleep(500);
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Incubation Screening Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+
+        }
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+
+    }
+
+    @Test
+    @DisplayName("Incubation Reviewer Login and Navbar Check")
+    void IncubationReviewerLogin() throws InterruptedException {
+        //ScreenRecorderUtil.startRecord("INNOVATION_REVIEWER_1 Check Ro  le and Navbar");
+
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+//
+
+        sleep(200);
+        $(By.id("username")).setValue("incRv1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+
+sleep(500);
+
+/* String text = $("#name").val();
+        System.out.println("Value of the element: " + text);
+        assertEquals("INNOVATION_REVIEWER_1", text);
+
+        sleep(1000);
+
+        String text1 = $("#emailAddress").val();
+        System.out.println("Value of the element: " + text1);
+        assertEquals("innovationReviewer1@beprc.com", text1);
+
+        sleep(5000);*/
+
+
+
+
+        if($(".text-sm.text-gray-200").getText().contains("IPSC(Incubation Proposal Scoring Committee")){
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("IPSC(Incubation Proposal Scoring Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+            }
+
+
+
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+    }
+
+    @Test
+    @DisplayName("Incubation Negotiation Committee Login and Navbar Check")
+    public void incubationNegotiationCommittee() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("incNgCm1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+        String elementText = $(By.cssSelector(".text-sm.text-gray-200")).shouldBe(visible).getText();
+        boolean x =elementText.contains("Incubation Negotiation Committee");
+        if(x){
+            sleep(500);
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Incubation Negotiation Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+
+        }
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+
+    }
+
+    @Test
+    @DisplayName("Entrepreneurship Admin Login and Navbar Check")
+    public void EntrepreneurshipAdmin() throws Exception {
+        //ScreenRecorderUtil.startRecord("Entrepreneurship Admin Login and Navbar Check");
+
+        open("http://localhost:5173/");
+        sleep(200);
+        $(byText("Login / Register")).shouldBe(visible).click();
+        /*$(By.className("bg-orange-600"))
+                .shouldBe(visible)
+                .click();*/
+
+        sleep(200);
+        $(By.id("username")).setValue("entadm@yahoo.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+        $(".text-sm.text-gray-200").shouldHave(text("Entrepreneurship Admin"));
+        String elementText = $(".text-sm.text-gray-200").getText();
+        System.out.println("Element text Role Name : " + elementText);
+       // $(byText("Entrepreneurship Admin")).shouldBe(visible);
+        sleep(200);
+
+//      href="/dashboard"
+        String dashboardText = $("a[href='/dashboard']").text();
+        System.out.println(dashboardText);
+        assertEquals("Dashboard", dashboardText);
+        $("a[href='/dashboard']").click();
+        sleep(200);
+        String urlDashboard = WebDriverRunner.url();
+        assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//        href="/proposal"
+        String proposaldText = $("a[href='/proposal']").text();
+        System.out.println(proposaldText);
+        assertEquals("Proposal", proposaldText);
+        $("a[href='/proposal']").click();
+        sleep(200);
+        String urlProposal = WebDriverRunner.url();
+        assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+//      href="/project-management-admin/3527c31f-a770-4898-bf60-5c8c7d1992f1"
+        String projectManagementAdminText = $("a[href='/project-management-admin/3527c31f-a770-4898-bf60-5c8c7d1992f1']").text();
+        System.out.println(projectManagementAdminText);
+        assertEquals("Project Management", projectManagementAdminText);
+        $("a[href='/project-management-admin/3527c31f-a770-4898-bf60-5c8c7d1992f1']").click();
+        sleep(200);
+        String urlLabManagement = WebDriverRunner.url();
+        assertEquals(urlLabManagement, "http://localhost:5173/project-management-admin/3527c31f-a770-4898-bf60-5c8c7d1992f1");
+
+//      href="/report-management-admin/3527c31f-a770-4898-bf60-5c8c7d1992f1"
+        String reportManagementAdmin = $("a[href='/report-management-admin/3527c31f-a770-4898-bf60-5c8c7d1992f1']").text();
+        System.out.println(reportManagementAdmin);
+        assertEquals("Report Management", reportManagementAdmin);
+        $("a[href='/report-management-admin/3527c31f-a770-4898-bf60-5c8c7d1992f1']").click();
+        sleep(200);
+        String urlReportManagement = WebDriverRunner.url();
+        assertEquals(urlReportManagement, "http://localhost:5173/report-management-admin/3527c31f-a770-4898-bf60-5c8c7d1992f1");
+
+//      href="/solicitation"
+        String solicitationText = $("a[href='/solicitation']").text();
+        System.out.println(solicitationText);
+        assertEquals("Entrepreneurship Solicitation", solicitationText);
+        $("a[href='/solicitation']").click();
+        sleep(200);
+        String urlEntrepreneurshipSolicitation = WebDriverRunner.url();
+        assertEquals(urlEntrepreneurshipSolicitation, "http://localhost:5173/solicitation");
+
+//      href="/reviewer/ENTREPRENEURSHIP"
+        String reviewerText = $("a[href='/reviewer/ENTREPRENEURSHIP']").text();
+        System.out.println(reviewerText);
+        assertEquals("Entrepreneurship Evaluation Committee", reviewerText);
+        $("a[href='/reviewer/ENTREPRENEURSHIP']").click();
+        sleep(200);
+        String urlEntrepreneurshipEvaluationCommittee = WebDriverRunner.url();
+        assertEquals(urlEntrepreneurshipEvaluationCommittee, "http://localhost:5173/reviewer/ENTREPRENEURSHIP");
+
+//      href="/negotiation/ENTREPRENEURSHIP_NEGOTIATION_COMMITTEE/b769d1da-754b-4053-ac80-fadd77b7fd7d"
+        String negotiationText = $("a[href='/negotiation/ENTREPRENEURSHIP_NEGOTIATION_COMMITTEE/b769d1da-754b-4053-ac80-fadd77b7fd7d']").text();
+        System.out.println(negotiationText);
+        assertEquals("Entrepreneurship Negotiation Committee", negotiationText);
+        $("a[href='/negotiation/ENTREPRENEURSHIP_NEGOTIATION_COMMITTEE/b769d1da-754b-4053-ac80-fadd77b7fd7d']").click();
+        sleep(200);
+        String urlEntrepreneurshipNegotiationCommittee = WebDriverRunner.url();
+        assertEquals(urlEntrepreneurshipNegotiationCommittee, "http://localhost:5173/negotiation/ENTREPRENEURSHIP_NEGOTIATION_COMMITTEE/b769d1da-754b-4053-ac80-fadd77b7fd7d");
+
+//      href="/AttachmentDeclaration"
+        String attachmentDeclarationText = $("a[href='/AttachmentDeclaration']").text();
+        System.out.println(attachmentDeclarationText);
+        assertEquals("Attachment & Declaration", attachmentDeclarationText);
+        $("a[href='/AttachmentDeclaration']").click();
+        sleep(200);
+        String urlAttachmentDeclaration = WebDriverRunner.url();
+        assertEquals(urlAttachmentDeclaration, "http://localhost:5173/AttachmentDeclaration");
+
+//      href="/user"
+        String userText = $("a[href='/user']").text();
+        System.out.println(userText);
+        assertEquals("User", userText);
+        $("a[href='/user']").click();
+        sleep(200);
+        String urlUser = WebDriverRunner.url();
+        assertEquals(urlUser, "http://localhost:5173/user");
+
+//      href="/report"
+        String reportText = $("a[href='/report']").text();
+        System.out.println(reportText);
+        assertEquals("Report", reportText);
+        $("a[href='/report']").click();
+        sleep(200);
+        String urlReport = WebDriverRunner.url();
+        assertEquals(urlReport, "http://localhost:5173/report");
+
+//      href="/pcr-report-list"
+        String pcrReportListText = $("a[href='/pcr-report-list']").text();
+        System.out.println(pcrReportListText);
+        assertEquals("PCR & Recommendation Report", pcrReportListText);
+        $("a[href='/pcr-report-list']").click();
+        sleep(200);
+        String urlPCRRecommendationReport = WebDriverRunner.url();
+        assertEquals(urlPCRRecommendationReport, "http://localhost:5173/pcr-report-list");
+        sleep(200);
+
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(500);
+        //ScreenRecorderUtil.stopRecord();
+
+    }
+
+    @Test
+    @DisplayName("Entrepreneurship Reviewer Login and Navber Check")
+    public void entrepreneurshipReviewer() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+
+
+        sleep(200);
+        $(By.id("username")).setValue("entRv1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        if($(".text-sm.text-gray-200").getText().contains("Entrepreneurship Evaluation Committee")){
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Entrepreneurship Evaluation Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+        }
+
+
+
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+
+    }
+
+    @Test
+    @DisplayName("Entrepreneurship Negotiation Committee Login and Navber Check")
+    public void entrepreneurshipNegotiationCommittee() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("entNgCm1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+        String elementText = $(By.cssSelector(".text-sm.text-gray-200")).shouldBe(visible).getText();
+        boolean x =elementText.contains("Entrepreneurship Negotiation Committee");
+        if(x){
+            sleep(500);
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Entrepreneurship Negotiation Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+
+        }
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+    }
+
+    @Test
+    @DisplayName("Lab Development Admin Login and Navbar Check")
+    public void labDevAdmin() throws Exception {
+       // ScreenRecorderUtil.startRecord("Lab Development Admin Login and Navbar Check");
+
+        open("http://localhost:5173/");
+        sleep(2000);
+        $(byText("Login / Register")).shouldBe(visible).click();
+
+
+       /* $(By.className("bg-orange-600"))
+                .shouldBe(visible)
+                .click();*/
+
+        sleep(200);
+        $(By.id("username")).setValue("lbdadmin@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+       /* $(".text-sm text-gray-200").shouldHave(text("Lab Development Admin"));
+        String elementText = $(".text-sm text-gray-200").getText();
+        System.out.println("Element text Role Name : " + elementText);*/
+
+        $(".text-sm.text-gray-200").shouldHave(text("Lab Development Admin"));
+        String elementText=$(".text-sm.text-gray-200").getText();
+        System.out.println("Element text Role Name : " + elementText);
+        sleep(200);
+
+//      href="/dashboard"
+        String dashboardText = $("a[href='/dashboard']").text();
+        System.out.println(dashboardText);
+        assertEquals("Dashboard", dashboardText);
+        $("a[href='/dashboard']").click();
+        sleep(200);
+        String urlDashboard = WebDriverRunner.url();
+        assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//      href="/proposal"
+        String proposaldText = $("a[href='/proposal']").text();
+        System.out.println(proposaldText);
+        assertEquals("Proposal", proposaldText);
+        $("a[href='/proposal']").click();
+        sleep(200);
+        String urlProposal = WebDriverRunner.url();
+        assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+//      href="/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb"
+        String projectManagementAdminText = $("a[href='/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb']").text();
+        System.out.println(projectManagementAdminText);
+        assertEquals("Lab Management", projectManagementAdminText);
+        $("a[href='/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb']").click();
+        sleep(200);
+        String urlLabManagement = WebDriverRunner.url();
+        assertEquals(urlLabManagement, "http://localhost:5173/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb");
+
+//      href="/lab-program"
+        String labProgramText = $("a[href='/lab-program']").text();
+        System.out.println(labProgramText);
+        assertEquals("Lab Program", labProgramText);
+        $("a[href='/lab-program']").click();
+        sleep(200);
+        String urlLabProgram = WebDriverRunner.url();
+        assertEquals(urlLabProgram, "http://localhost:5173/lab-program");
+
+
+//      href="/lab-criteria"
+        String labriteriaText = $("a[href='/lab-criteria']").text();
+        System.out.println(labriteriaText);
+        assertEquals("Evaluation Committee Criteria", labriteriaText);
+        $("a[href='/lab-criteria']").click();
+        sleep(200);
+        String urlEvaluationCommitteeCriteria = WebDriverRunner.url();
+        assertEquals(urlEvaluationCommitteeCriteria, "http://localhost:5173/lab-criteria");
+
+
+//      href="/reviewer/LAB_DEVELOPMENT"
+        String reviewerText = $("a[href='/reviewer/LAB_DEVELOPMENT']").text();
+        System.out.println(reviewerText);
+        assertEquals("Evaluation Committee", reviewerText);
+        $("a[href='/reviewer/LAB_DEVELOPMENT']").click();
+        sleep(200);
+        String urlEvaluationCommittee = WebDriverRunner.url();
+        assertEquals(urlEvaluationCommittee, "http://localhost:5173/reviewer/LAB_DEVELOPMENT");
+
+
+//      href="/negotiation/LAB_DEV_NEGOTIATION_COMMITTEE/4afa2e4c-44e1-4c5c-aecc-0877f75aa4e8"
+        String negotiationText = $("a[href='/negotiation/LAB_DEV_NEGOTIATION_COMMITTEE/4afa2e4c-44e1-4c5c-aecc-0877f75aa4e8']").text();
+        System.out.println(negotiationText);
+        assertEquals("Negotiation Committee", negotiationText);
+        $("a[href='/negotiation/LAB_DEV_NEGOTIATION_COMMITTEE/4afa2e4c-44e1-4c5c-aecc-0877f75aa4e8']").click();
+        sleep(200);
+        String urlNegotiationCommittee = WebDriverRunner.url();
+        assertEquals(urlNegotiationCommittee, "http://localhost:5173/negotiation/LAB_DEV_NEGOTIATION_COMMITTEE/4afa2e4c-44e1-4c5c-aecc-0877f75aa4e8");
+
+
+//      href="/AttachmentDeclaration"
+        String attachmentDeclarationText = $("a[href='/AttachmentDeclaration']").text();
+        System.out.println(attachmentDeclarationText);
+        assertEquals("Attachment & Declaration", attachmentDeclarationText);
+        $("a[href='/AttachmentDeclaration']").click();
+        sleep(200);
+        String urlAttachmentDeclaration = WebDriverRunner.url();
+        assertEquals(urlAttachmentDeclaration, "http://localhost:5173/AttachmentDeclaration");
+
+
+//      href="/user"
+        String userText = $("a[href='/user']").text();
+        System.out.println(userText);
+        assertEquals("User", userText);
+        $("a[href='/user']").click();
+        sleep(200);
+        String urlUser = WebDriverRunner.url();
+        assertEquals(urlUser, "http://localhost:5173/user");
+
+//      href="/report"
+        String reportText = $("a[href='/report']").text();
+        System.out.println(reportText);
+        assertEquals("Report", reportText);
+        $("a[href='/report']").click();
+        sleep(200);
+        String urlReport = WebDriverRunner.url();
+        assertEquals(urlReport, "http://localhost:5173/report");
+
+//      href="/pcr-report-list"
+        String pcrText = $("a[href='/pcr-report-list']").text();
+        System.out.println(pcrText);
+        assertEquals("Lab Development PCR", pcrText);
+        $("a[href='/pcr-report-list']").click();
+        sleep(200);
+        String urlLabDevelopmentPCR = WebDriverRunner.url();
+        assertEquals(urlLabDevelopmentPCR, "http://localhost:5173/pcr-report-list");
+
+        sleep(200);
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(500);
+       // ScreenRecorderUtil.stopRecord();
+
+    }
+
+    @Test
+    @DisplayName("Lab Development Reviewer Login and Navbar Check")
+    public void labDevelopmentReviewere() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+
+
+        sleep(200);
+        $(By.id("username")).setValue("lbdRv3@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+
+
+       /* String text = $("#name").val();
+        System.out.println("Value of the element: " + text);
+        assertEquals("INNOVATION_REVIEWER_1", text);
+
+        sleep(1000);
+
+        String text1 = $("#emailAddress").val();
+        System.out.println("Value of the element: " + text1);
+        assertEquals("innovationReviewer1@beprc.com", text1);
+        sleep(200);*/
+
+        if($(".text-sm.text-gray-200").getText().contains("Evaluation Committee")){
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Evaluation Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+        }
+
+
+
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+
+    }
+
+    @Test
+    @DisplayName("Lab Negotiation Committee Login and Navbar Check")
+    public void labNegotiationCommittee() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("lbdNgCm1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+        String elementText = $(By.cssSelector(".text-sm.text-gray-200")).shouldBe(visible).getText();
+        boolean x =elementText.contains("Negotiation Committee");
+        if(x){
+            sleep(500);
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Negotiation Committee")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/proposal"
+            String proposalText = $("a[href='/proposal']").text();
+            System.out.println(proposalText);
+            assertEquals("Proposal", proposalText);
+            $("a[href='/proposal']").click();
+            sleep(200);
+            String urlProposal = WebDriverRunner.url();
+            assertEquals(urlProposal, "http://localhost:5173/proposal");
+
+
+        }
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+
+    }
+
+    @Test
+    @DisplayName("Lab Technical Monitoring Team Login and Navbar Check")
+    public void labTechnicalMonitoringTeam() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("innovationReviewer1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+
+        if($(".text-sm.text-gray-200").getText().contains("Lab Technical Monitoring Team")){
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb"
+            String projectManagementAdminText = $("a[href='/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb']").text();
+            System.out.println(projectManagementAdminText);
+            assertEquals("Lab Management", projectManagementAdminText);
+            $("a[href='/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb']").click();
+            sleep(200);
+            String urlProjectManagement= WebDriverRunner.url();
+            assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Lab Technical Monitoring Team")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+
+            //href="/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb"
+            String projectManagementAdminText = $("a[href='/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb']").text();
+            System.out.println(projectManagementAdminText);
+            assertEquals("Lab Management", projectManagementAdminText);
+            $("a[href='/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb']").click();
+            sleep(200);
+            String urlProjectManagement= WebDriverRunner.url();
+            assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb");
+
+
+        }
+
+        sleep(5000);
+
+
+
+
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+    }
+
+    @Test
+    @DisplayName("Lab Procurement Monitoring Team Login and Navbar Check")
+    public void labProcurementMonitoringTeam() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("innovationReviewer2@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+
+        if($(".text-sm.text-gray-200").getText().contains("Lab Procurement Monitoring Team")){
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf"
+            String projectManagementAdminText = $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").text();
+            System.out.println(projectManagementAdminText);
+            assertEquals("Project Management", projectManagementAdminText);
+            $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").click();
+            sleep(200);
+            String urlProjectManagement= WebDriverRunner.url();
+            assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Lab Procurement Monitoring Team")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+
+            //href="/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb"
+            String projectManagementAdminText = $("a[href='/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb']").text();
+            System.out.println(projectManagementAdminText);
+            assertEquals("Lab Management", projectManagementAdminText);
+            $("a[href='/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb']").click();
+            sleep(200);
+            String urlProjectManagement= WebDriverRunner.url();
+            assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb");
+
+
+        }
+
+        sleep(5000);
+
+
+
+
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+    }
+
+    @Test
+    @DisplayName("Procurement Monitoring Team Login and Navbar Check")
+    public void procurementMonitoringTeam() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("innovationReviewer1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+
+        if($(".text-sm.text-gray-200").getText().contains("Procurement Monitoring Team")){
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf"
+            String projectManagementAdminText = $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").text();
+            System.out.println(projectManagementAdminText);
+            assertEquals("Project Management", projectManagementAdminText);
+            $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").click();
+            sleep(200);
+            String urlProjectManagement= WebDriverRunner.url();
+            assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Procurement Monitoring Team")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+
+            //href="/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb"
+            String projectManagementAdminText = $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").text();
+            System.out.println(projectManagementAdminText);
+            assertEquals("Project Management", projectManagementAdminText);
+            $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").click();
+            sleep(200);
+            String urlProjectManagement= WebDriverRunner.url();
+            assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf");
+
+
+        }
+
+        sleep(5000);
+
+
+
+
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+    }
+
+    @Test
+    @DisplayName("Technical Monitoring Team Login and Navbar Check")
+    public void technicalMonitoringTeam() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+        sleep(200);
+
+        $(By.id("username")).setValue("innovationReviewer1@beprc.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(200);
+
+
+        if($(".text-sm.text-gray-200").getText().contains("Technical Monitoring Team")){
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+//          href="/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf"
+            String projectManagementAdminText = $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").text();
+            System.out.println(projectManagementAdminText);
+            assertEquals("Project Management", projectManagementAdminText);
+            $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").click();
+            sleep(200);
+            String urlProjectManagement= WebDriverRunner.url();
+            assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf");
+
+        }else{
+            $(By.className("fill-gray-100")).click();
+            $(byText("Technical Monitoring Team")).shouldBe(visible).click();
+            sleep(2000);
+
+//          href="/dashboard"
+            String dashboardText = $("a[href='/dashboard']").text();
+            System.out.println(dashboardText);
+            assertEquals("Dashboard", dashboardText);
+            $("a[href='/dashboard']").click();
+            sleep(200);
+            String urlDashboard = WebDriverRunner.url();
+            assertEquals(urlDashboard, "http://localhost:5173/dashboard");
+
+
+            //href="/project-management-admin/46d007cd-c4e3-4c15-a378-1f2a221a5beb"
+            String projectManagementAdminText = $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").text();
+            System.out.println(projectManagementAdminText);
+            assertEquals("Project Management", projectManagementAdminText);
+            $("a[href='/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf']").click();
+            sleep(200);
+            String urlProjectManagement= WebDriverRunner.url();
+            assertEquals(urlProjectManagement, "http://localhost:5173/project-management-admin/14a5701a-f3cb-453e-a227-dcf66f95e2cf");
+
+
+        }
+
+        sleep(5000);
+
+
+
+
+        $(By.className("fill-gray-100")).shouldBe(visible).click();
+        $(byText("Log Out")).shouldBe(visible).click();
+        closeWindow();
+        sleep(1000);
+        //ScreenRecorderUtil.stopRecord();
+    }
+
+
+
+    @Disabled("Remove to run test")
+    @Test
+    @DisplayName("Applicant Login(User)")
+    public void applicantLogin() throws InterruptedException {
+        open("http://localhost:5173/");
+        sleep(200);
+
+        $(byText("Login / Register")).shouldBe(visible).click();
+
+        sleep(200);
+        $(By.id("username")).setValue("adi@gmail.com");
+        $(By.id("password")).setValue("12345");
+        $(By.name("login")).click();
+        sleep(5000);
+    }
+}
+
